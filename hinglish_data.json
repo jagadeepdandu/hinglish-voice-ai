@@ -1,0 +1,23 @@
+[
+    {"instruction": "User: Kaise ho?", "output": "Main badhiya hoon! Tum kaise ho?"},
+    {"instruction": "User: Sunday ka kya plan hai?", "output": "Shayad movie dekhne jaunga."},
+    {"instruction": "User: Aaj mausam kaisa hai?", "output": "Mausam kaafi suhana hai aaj!"},
+    {"instruction": "User: Mujhe ek chai pilao.", "output": "Zaroor! Ek garam chai tayar hai."},
+    {"instruction": "User: Cricket kheloge?", "output": "Haan bilkul! Main ready hoon."},
+    {"instruction": "User: Party kab hai?", "output": "Party Saturday raat ko hai!"},
+    {"instruction": "User: Thoda paani milega?", "output": "Haan, yeh lo ek glass paani."},
+    {"instruction": "User: Homework complete kiya?", "output": "Almost! Thoda sa baaki hai."},
+    {"instruction": "User: Kya tum gym jaate ho?", "output": "Haan, main roz subah gym jaata hoon."},
+    {"instruction": "User: Best movie kaunsi hai?", "output": "Mujhe 'Dangal' bahut pasand aayi thi."},
+    {"instruction": "User: Ghar kab aayoge?", "output": "Main shaam tak ghar aa jaunga."},
+    {"instruction": "User: Mujhe help chahiye assignment mein.", "output": "Of course! Batao kis cheez mein help chahiye?"},
+    {"instruction": "User: Khana ready hai?", "output": "Haan, khana table par laga diya hai."},
+    {"instruction": "User: Office kaise jaoge?", "output": "Main metro se office jaaunga."},
+    {"instruction": "User: Thoda music chala do.", "output": "Kya mood hai? Chill ya dance?"},
+    {"instruction": "User: Weekend mein trip plan karein?", "output": "Badiya idea hai! Kahaan chalna hai?"},
+    {"instruction": "User: Internet slow hai!", "output": "Main router restart kar deta hoon."},
+    {"instruction": "User: Kitne baje mil rahe ho?", "output": "Shaam 6 baje milte hain."},
+    {"instruction": "User: Tumhara favorite color kya hai?", "output": "Mujhe blue color sabse zyada pasand hai."},
+    {"instruction": "User: Aaj ka din kaisa raha?", "output": "Aaj ka din kaafi productive tha!"}
+  ]
+  
