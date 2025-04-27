@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Hinglish Chatbot</title>
+    <link href="https://fonts.googleapis.com/css?family=Inter:400,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --harway-primary: #6246ea;
+            --harway-bg: #f7f8fa;
+            --harway-card: #fff;
+            --harway-dark: #23272f;
+            --harway-accent: #e45858;
+            --bubble-user: #e8eafe;
+            --bubble-assistant: #f5f5f7;
+            --bubble-border: #e0e0e6;
+        }
+
+        :root {
+            --harway-primary: #6246ea;
+            --harway-bg: #f4f6fb;
+            --harway-card: #fff;
+            --harway-dark: #22223b;
+            --harway-accent: #e45858;
+        }
+
+        body { font-family: 'Inter', Arial, sans-serif; background: var(--harway-bg); margin: 0; padding: 0; }
+        .container {
+            max-width: 520px;
+            margin: 48px auto 0 auto;
+            background: var(--harway-card);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px #a0aec033;
+            padding: 0 0 0 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 80vh;
+        }
+        .brand-header {
+            background: var(--harway-primary);
+            color: #fff;
+            border-radius: 18px 18px 0 0;
+            padding: 32px 0 18px 0;
+            text-align: center;
+            position: relative;
+        }
+        .brand-logo {
+            width: 54px;
+            height: 54px;
+            background: #fff;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 8px #6246ea22;
+        }
+        .brand-logo span {
+            color: var(--harway-primary);
+            font-size: 2.1em;
+            font-weight: 700;
+            font-family: 'Inter', Arial, sans-serif;
+        }
+        .brand-title {
+            font-size: 1.45em;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .brand-tagline {
+            font-size: 0.98em;
+            font-weight: 400;
+            color: #e0e0ff;
+            margin-top: 3px;
+        }
+        .chat-box {
+            flex: 1;
+            background: #f7f7fd;
+            border-radius: 0 0 0 0;
+            padding: 28px 24px 18px 24px;
+            border: none;
+            font-size: 1.08em;
+            max-height: none;
+            overflow-y: auto;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .message-row {
+            display: flex;
+            margin-bottom: 2px;
+        }
+        .bubble {
+            padding: 13px 18px;
+            border-radius: 16px;
+            max-width: 75%;
+            box-shadow: 0 1px 4px #e0e0e6aa;
+            font-size: 1.04em;
+            line-height: 1.5;
+        }
+        .bubble.user {
+            background: var(--bubble-user);
+            color: var(--harway-dark);
+            align-self: flex-end;
+            border-bottom-right-radius: 6px;
+            border: 1.5px solid var(--bubble-border);
+            margin-left: auto;
+        }
+        .bubble.bot {
+            background: var(--bubble-assistant);
+            color: var(--harway-primary);
+            align-self: flex-start;
+            border-bottom-left-radius: 6px;
+            border: 1.5px solid var(--bubble-border);
+            margin-right: auto;
+        }
+        .input-bar {
+            display: flex;
+            gap: 10px;
+            padding: 18px 24px 24px 24px;
+            background: var(--harway-card);
+            border-radius: 0 0 18px 18px;
+            box-shadow: 0 -2px 8px #e0e0e622;
+            position: sticky;
+            bottom: 0;
+            z-index: 10;
+        }
+        input[type=text] {
+            flex: 1;
+            padding: 14px;
+            border-radius: 8px;
+            border: 1.5px solid #cbd5e0;
+            font-size: 1em;
+            transition: border 0.2s;
+            background: #f5f5fa;
+        }
+        input[type=text]:focus {
+            border: 1.5px solid var(--harway-primary);
+            outline: none;
+        }
+        button {
+            background: var(--harway-primary);
+            color: #fff;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1em;
+            transition: background 0.2s;
+        }
+        button[type=button] {
+            background: var(--harway-accent);
+        }
+        button:disabled {
+            background: #b2b7bd;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 0; }
+            .chat-box { padding: 18px 4vw 10px 4vw; }
+            .input-bar { padding: 12px 4vw 16px 4vw; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="brand-header">
+            <div class="brand-logo"><span>H</span></div>
+            <div class="brand-title">Hinglish voice AI</div>
+            <div class="brand-tagline">Hinglish Assistant</div>
+        </div>
+        <div class="chat-box" id="chat-box">
+            <div class="message-row">
+                <div class="bubble bot"><b>Assistant:</b> Namaste! Aap se kaise madad kar sakta hoon?</div>
+            </div>
+        </div>
+        <div class="input-bar">
+            <form id="chat-form" autocomplete="off" style="flex:1;display:flex;gap:10px;">
+                <input type="text" id="user-input" placeholder="Type your message..." required autofocus />
+                <button type="submit">Send</button>
+                <button type="button" id="clear-btn">Clear</button>
+            </form>
+        </div>
+    </div>
+<script>
+const chatBox = document.getElementById('chat-box');
+const chatForm = document.getElementById('chat-form');
+const userInput = document.getElementById('user-input');
+const clearBtn = document.getElementById('clear-btn');
+
+function addMessageBubble(role, text) {
+    const row = document.createElement('div');
+    row.className = 'message-row';
+    const bubble = document.createElement('div');
+    bubble.className = `bubble ${role}`;
+    if (role === 'user') {
+        bubble.innerHTML = `<b>You:</b> ${text}`;
+    } else {
+        bubble.innerHTML = `<b>Assistant:</b> ${text}`;
+    }
+    row.appendChild(bubble);
+    chatBox.appendChild(row);
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+chatForm.onsubmit = async (e) => {
+    e.preventDefault();
+    const prompt = userInput.value.trim();
+    if (!prompt) return;
+    addMessageBubble('user', prompt);
+    userInput.value = '';
+    chatForm.querySelector('button[type=submit]').disabled = true;
+    try {
+        const res = await fetch('/generate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ prompt: `User: ${prompt}\nAssistant:` })
+        });
+        const data = await res.json();
+        if (data.response) {
+            addMessageBubble('bot', data.response);
+        } else {
+            addMessageBubble('bot', data.error || 'Unknown error.');
+        }
+    } catch (err) {
+        addMessageBubble('bot', 'Could not reach server.');
+    }
+    chatForm.querySelector('button[type=submit]').disabled = false;
+};
+
+clearBtn.onclick = () => {
+    chatBox.innerHTML = '';
+    addMessageBubble('bot', 'Namaste! Aap se kaise madad kar sakta hoon?');
+    userInput.value = '';
+    userInput.focus();
+};
+</script>
+</body>
+</html>
